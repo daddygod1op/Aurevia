@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aurevia | Luxury Hospitality & Transport Management</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@200;300;400;500&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css.css">
+</head>
+<body class="loading">
+
+<!-- Preloader -->
+<div id="preloader">
+    <div class="preloader-inner">
+        <div class="preloader-logo">
+            <svg width="60" height="60" viewBox="0 0 60 60">
+                <circle cx="30" cy="30" r="28" fill="none" stroke="#d4af37" stroke-width="1" stroke-dasharray="175" stroke-dashoffset="175" class="preloader-circle"/>
+                <text x="30" y="36" text-anchor="middle" font-family="Cinzel" font-size="22" fill="#d4af37" class="preloader-letter">A</text>
+            </svg>
+        </div>
+        <p class="preloader-text">AUREVIA</p>
+    </div>
+</div>
+
+<!-- Cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-follower" id="cursor-follower"></div>
+
+<!-- =================== LOGIN PAGE =================== -->
+<div id="login-page" class="page active">
+    <div class="login-bg">
+        <div class="login-particles" id="particles"></div>
+        <div class="login-grid-overlay"></div>
+    </div>
+
+    <div class="login-container">
+        <div class="login-left">
+            <div class="login-brand">
+                <div class="brand-emblem">
+                    <svg width="80" height="80" viewBox="0 0 80 80">
+                        <polygon points="40,5 75,65 5,65" fill="none" stroke="#d4af37" stroke-width="1.5"/>
+                        <polygon points="40,18 63,58 17,58" fill="none" stroke="#d4af37" stroke-width="0.5" opacity="0.5"/>
+                        <circle cx="40" cy="40" r="10" fill="none" stroke="#d4af37" stroke-width="1"/>
+                        <text x="40" y="45" text-anchor="middle" font-family="Cinzel" font-size="12" fill="#d4af37">A</text>
+                    </svg>
+                </div>
+                <h1 class="brand-name">AUREVIA</h1>
+                <p class="brand-tagline">Hospitality & Transport Excellence</p>
+            </div>
+
+            <div class="login-features">
+                <div class="feature-item">
+                    <div class="feature-icon">◈</div>
+                    <div>
+                        <h4>Operations Dashboard</h4>
+                        <p>Real-time monitoring of all hotel & transport operations</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">◈</div>
+                    <div>
+                        <h4>Team Coordination</h4>
+                        <p>Seamless task assignment and progress tracking</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">◈</div>
+                    <div>
+                        <h4>Analytics & Reports</h4>
+                        <p>Comprehensive insights for smarter decision making</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="login-right">
+            <div class="login-card" id="login-form-container">
+                <div class="login-tabs">
+                    <button class="tab-btn active" data-tab="signin">Sign In</button>
+                    <button class="tab-btn" data-tab="register">Register</button>
+                </div>
+
+                <!-- Sign In Form -->
+                <div class="tab-content active" id="signin-tab">
+                    <h2 class="form-title">Welcome Back</h2>
+                    <p class="form-subtitle">Sign in to your operations portal</p>
+
+                    <div class="role-selector">
+                        <button class="role-btn active" data-role="admin">
+                            <span class="role-icon">⬡</span>
+                            Admin
+                        </button>
+                        <button class="role-btn" data-role="manager">
+                            <span class="role-icon">⬡</span>
+                            Manager
+                        </button>
+                        <button class="role-btn" data-role="staff">
+                            <span class="role-icon">⬡</span>
+                            Staff
+                        </button>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Email Address</label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">✉</span>
+                            <input type="email" class="form-input" id="login-email" placeholder="admin@aurevia.com" value="admin@aurevia.com">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">◉</span>
+                            <input type="password" class="form-input" id="login-password" placeholder="••••••••" value="admin123">
+                            <span class="input-toggle" id="toggle-password">◎</span>
+                        </div>
+                    </div>
+
+                    <div class="form-options">
+                        <label class="remember-me">
+                            <input type="checkbox" checked>
+                            <span class="custom-check"></span>
+                            Remember me
+                        </label>
+                        <a href="#" class="forgot-link">Forgot password?</a>
+                    </div>
+
+                    <button class="btn-primary" id="login-btn" onclick="handleLogin()">
+                        <span class="btn-text">Access Portal</span>
+                        <span class="btn-arrow">→</span>
+                    </button>
+
+                    <div class="demo-hint">
+                        <span>Demo: any email / any password</span>
+                    </div>
+                </div>
+
+                <!-- Register Form -->
+                <div class="tab-content" id="register-tab">
+                    <h2 class="form-title">Join Aurevia</h2>
+                    <p class="form-subtitle">Create your operations account</p>
+
+                    <div class="form-group">
+                        <label class="form-label">Full Name</label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">❖</span>
+                            <input type="text" class="form-input" placeholder="Your full name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email Address</label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">✉</span>
+                            <input type="email" class="form-input" placeholder="your@email.com">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Department</label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">⬡</span>
+                            <select class="form-input form-select">
+                                <option>Hotel Operations</option>
+                                <option>Transport Management</option>
+                                <option>Guest Relations</option>
+                                <option>Administration</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Access Code</label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">◉</span>
+                            <input type="password" class="form-input" placeholder="Company access code">
+                        </div>
+                    </div>
+                    <button class="btn-primary" onclick="handleLogin()">
+                        <span class="btn-text">Create Account</span>
+                        <span class="btn-arrow">→</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- =================== MAIN APP =================== -->
+<div id="main-app" class="page">
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-brand">
+                <div class="sidebar-emblem">A</div>
+                <div>
+                    <span class="sidebar-logo-text">AUREVIA</span>
+                    <span class="sidebar-logo-sub">Operations Hub</span>
+                </div>
+            </div>
+            <button class="sidebar-toggle" id="sidebar-toggle">☰</button>
+        </div>
+
+        <div class="user-profile-mini">
+            <div class="user-avatar" id="sidebar-avatar">A</div>
+            <div class="user-info">
+                <span class="user-name" id="sidebar-name">Admin User</span>
+                <span class="user-role" id="sidebar-role">Administrator</span>
+            </div>
+            <div class="user-status online"></div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <div class="nav-section-label">MAIN</div>
+            <a class="sidebar-link active" data-page="dashboard" onclick="navigateTo('dashboard')">
+                <span class="link-icon">◈</span>
+                <span class="link-text">Dashboard</span>
+                <span class="link-badge">Live</span>
+            </a>
+            <a class="sidebar-link" data-page="hotel" onclick="navigateTo('hotel')">
+                <span class="link-icon">⬡</span>
+                <span class="link-text">Hotel Operations</span>
+                <span class="link-count" id="hotel-count">6</span>
+            </a>
+            <a class="sidebar-link" data-page="transport" onclick="navigateTo('transport')">
+                <span class="link-icon">◎</span>
+                <span class="link-text">Transport Ops</span>
+                <span class="link-count" id="transport-count">6</span>
+            </a>
+            <a class="sidebar-link" data-page="analytics" onclick="navigateTo('analytics')">
+                <span class="link-icon">❖</span>
+                <span class="link-text">Analytics</span>
+            </a>
+            <a class="sidebar-link" data-page="team" onclick="navigateTo('team')">
+                <span class="link-icon">◇</span>
+                <span class="link-text">Team</span>
+            </a>
+
+            <div class="nav-section-label">SYSTEM</div>
+            <a class="sidebar-link" data-page="settings" onclick="navigateTo('settings')">
+                <span class="link-icon">⚙</span>
+                <span class="link-text">Settings</span>
+            </a>
+            <a class="sidebar-link" onclick="handleLogout()">
+                <span class="link-icon">⇐</span>
+                <span class="link-text">Logout</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="system-status">
+                <div class="status-dot pulse"></div>
+                <span>All Systems Operational</span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Panel -->
+    <div class="main-panel" id="main-panel">
+
+        <!-- Top Bar -->
+        <header class="topbar">
+            <div class="topbar-left">
+                <button class="topbar-menu-btn" id="topbar-toggle">☰</button>
+                <div class="breadcrumb">
+                    <span class="breadcrumb-home">Aurevia</span>
+                    <span class="breadcrumb-sep">›</span>
+                    <span class="breadcrumb-current" id="breadcrumb-current">Dashboard</span>
+                </div>
+            </div>
+            <div class="topbar-right">
+                <div class="search-bar">
+                    <span class="search-icon">⌕</span>
+                    <input type="text" placeholder="Search tasks, staff..." class="search-input" id="global-search">
+                </div>
+                <button class="topbar-btn" id="theme-toggle" onclick="toggleTheme()" title="Toggle Theme">◑</button>
+                <div class="notif-btn" onclick="toggleNotifications()">
+                    <span>◉</span>
+                    <span class="notif-badge" id="notif-badge">3</span>
+                </div>
+                <div class="topbar-user" onclick="navigateTo('settings')">
+                    <div class="topbar-avatar" id="topbar-avatar">A</div>
+                    <span class="topbar-username" id="topbar-name">Admin</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Notifications Panel -->
+        <div class="notif-panel" id="notif-panel">
+            <div class="notif-header">
+                <h3>Notifications</h3>
+                <button onclick="toggleNotifications()" class="notif-close">✕</button>
+            </div>
+            <div class="notif-list">
+                <div class="notif-item unread">
+                    <div class="notif-dot"></div>
+                    <div class="notif-content">
+                        <p class="notif-title">Room 204 check-in pending</p>
+                        <p class="notif-time">2 minutes ago</p>
+                    </div>
+                </div>
+                <div class="notif-item unread">
+                    <div class="notif-dot"></div>
+                    <div class="notif-content">
+                        <p class="notif-title">Vehicle AV-003 maintenance due</p>
+                        <p class="notif-time">15 minutes ago</p>
+                    </div>
+                </div>
+                <div class="notif-item unread">
+                    <div class="notif-dot"></div>
+                    <div class="notif-content">
+                        <p class="notif-title">New team member registered</p>
+                        <p class="notif-time">1 hour ago</p>
+                    </div>
+                </div>
+                <div class="notif-item">
+                    <div class="notif-dot"></div>
+                    <div class="notif-content">
+                        <p class="notif-title">Daily report generated</p>
+                        <p class="notif-time">6 hours ago</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Content Area -->
+        <div class="content-area">
+
+            <!-- ===== DASHBOARD PAGE ===== -->
+            <div class="app-page active" id="page-dashboard">
+                <div class="page-header">
+                    <div>
+                        <h1 class="page-title">Operations Dashboard</h1>
+                        <p class="page-subtitle" id="dashboard-greeting">Good morning, welcome back</p>
+                    </div>
+                    <div class="page-actions">
+                        <button class="btn-secondary" onclick="resetAllTasks()">↺ Reset Day</button>
+                        <button class="btn-gold" onclick="generateReport()">⬡ Generate Report</button>
+                    </div>
+                </div>
+
+                <!-- KPI Cards -->
+                <div class="kpi-grid">
+                    <div class="kpi-card gold">
+                        <div class="kpi-icon">⬡</div>
+                        <div class="kpi-data">
+                            <span class="kpi-value" id="kpi-total">12</span>
+                            <span class="kpi-label">Total Tasks</span>
+                        </div>
+                        <div class="kpi-trend up">↑ Today</div>
+                    </div>
+                    <div class="kpi-card green">
+                        <div class="kpi-icon">◈</div>
+                        <div class="kpi-data">
+                            <span class="kpi-value" id="kpi-completed">0</span>
+                            <span class="kpi-label">Completed</span>
+                        </div>
+                        <div class="kpi-trend" id="kpi-comp-pct">0%</div>
+                    </div>
+                    <div class="kpi-card amber">
+                        <div class="kpi-icon">◎</div>
+                        <div class="kpi-data">
+                            <span class="kpi-value" id="kpi-pending">12</span>
+                            <span class="kpi-label">Pending</span>
+                        </div>
+                        <div class="kpi-trend" id="kpi-pend-pct">100%</div>
+                    </div>
+                    <div class="kpi-card blue">
+                        <div class="kpi-icon">❖</div>
+                        <div class="kpi-data">
+                            <span class="kpi-value" id="kpi-staff">8</span>
+                            <span class="kpi-label">Staff Online</span>
+                        </div>
+                        <div class="kpi-trend up">↑ Active</div>
+                    </div>
+                </div>
+
+                <!-- Progress + Quick Overview -->
+                <div class="dashboard-grid">
+                    <div class="dash-card progress-card">
+                        <div class="card-header">
+                            <h3 class="card-title">Daily Progress</h3>
+                            <span class="card-badge" id="progress-pct-label">0% Complete</span>
+                        </div>
+                        <div class="progress-ring-container">
+                            <svg class="progress-ring" width="180" height="180" viewBox="0 0 180 180">
+                                <circle cx="90" cy="90" r="75" fill="none" stroke="rgba(212,175,55,0.1)" stroke-width="12"/>
+                                <circle cx="90" cy="90" r="75" fill="none" stroke="url(#goldGrad)" stroke-width="12"
+                                    stroke-dasharray="471" stroke-dashoffset="471"
+                                    stroke-linecap="round" id="progress-circle"
+                                    transform="rotate(-90 90 90)"/>
+                                <defs>
+                                    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#d4af37"/>
+                                        <stop offset="100%" stop-color="#f4d03f"/>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                            <div class="progress-ring-text">
+                                <span id="progress-pct-big">0%</span>
+                                <span>Complete</span>
+                            </div>
+                        </div>
+                        <div class="progress-breakdown">
+                            <div class="breakdown-row">
+                                <span>Hotel Tasks</span>
+                                <div class="mini-bar">
+                                    <div class="mini-fill hotel-fill" id="hotel-mini-fill" style="width:0%"></div>
+                                </div>
+                                <span id="hotel-progress-text">0/6</span>
+                            </div>
+                            <div class="breakdown-row">
+                                <span>Transport Tasks</span>
+                                <div class="mini-bar">
+                                    <div class="mini-fill transport-fill" id="transport-mini-fill" style="width:0%"></div>
+                                </div>
+                                <span id="transport-progress-text">0/6</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dash-card activity-card">
+                        <div class="card-header">
+                            <h3 class="card-title">Live Activity</h3>
+                            <span class="live-dot">● LIVE</span>
+                        </div>
+                        <div class="activity-feed" id="activity-feed">
+                            <div class="activity-empty">
+                                <span class="activity-empty-icon">◎</span>
+                                <p>No activity yet. Start completing tasks to see updates here.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dash-card quick-tasks-card">
+                        <div class="card-header">
+                            <h3 class="card-title">Priority Tasks</h3>
+                            <a class="card-link" onclick="navigateTo('hotel')">View All →</a>
+                        </div>
+                        <div class="quick-task-list" id="quick-task-list"></div>
+                    </div>
+
+                    <div class="dash-card schedule-card">
+                        <div class="card-header">
+                            <h3 class="card-title">Today's Schedule</h3>
+                            <span class="card-date" id="today-date"></span>
+                        </div>
+                        <div class="schedule-timeline">
+                            <div class="timeline-item current">
+                                <div class="timeline-time">06:00</div>
+                                <div class="timeline-dot current-dot"></div>
+                                <div class="timeline-content">
+                                    <p class="timeline-title">Morning Shift Begins</p>
+                                    <p class="timeline-desc">Hotel & transport briefing</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-time">09:00</div>
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <p class="timeline-title">Check-in Peak Hours</p>
+                                    <p class="timeline-desc">Maximum guest arrivals expected</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-time">12:00</div>
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <p class="timeline-title">Fleet Inspection</p>
+                                    <p class="timeline-desc">All vehicles pre-departure check</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-time">18:00</div>
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <p class="timeline-title">Evening Operations Review</p>
+                                    <p class="timeline-desc">Day summary & tomorrow's prep</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-time">22:00</div>
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <p class="timeline-title">Night Shift Handover</p>
+                                    <p class="timeline-desc">Operations continuity briefing</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== HOTEL PAGE ===== -->
+            <div class="app-page" id="page-hotel">
+                <div class="page-header">
+                    <div>
+                        <h1 class="page-title">Hotel Operations</h1>
+                        <p class="page-subtitle">Manage all hotel tasks and responsibilities</p>
+                    </div>
+                    <div class="page-actions">
+                        <button class="btn-secondary" onclick="filterTasks('hotel', 'all')">All</button>
+                        <button class="btn-secondary" onclick="filterTasks('hotel', 'pending')">Pending</button>
+                        <button class="btn-secondary" onclick="filterTasks('hotel', 'done')">Done</button>
+                        <button class="btn-gold" onclick="openAddTaskModal('hotel')">+ Add Task</button>
+                    </div>
+                </div>
+
+                <div class="section-hero hotel-hero">
+                    <div class="section-hero-stats">
+                        <div class="hero-stat">
+                            <span class="hero-stat-val" id="hotel-done-count">0</span>
+                            <span class="hero-stat-label">Completed</span>
+                        </div>
+                        <div class="hero-stat-divider"></div>
+                        <div class="hero-stat">
+                            <span class="hero-stat-val" id="hotel-pending-count">6</span>
+                            <span class="hero-stat-label">Pending</span>
+                        </div>
+                        <div class="hero-stat-divider"></div>
+                        <div class="hero-stat">
+                            <span class="hero-stat-val" id="hotel-pct">0%</span>
+                            <span class="hero-stat-label">Progress</span>
+                        </div>
+                    </div>
+                    <div class="section-progress-bar">
+                        <div class="section-progress-fill hotel-progress" id="hotel-section-bar" style="width:0%"></div>
+                    </div>
+                </div>
+
+                <div class="tasks-grid" id="hotel-tasks-grid"></div>
+            </div>
+
+            <!-- ===== TRANSPORT PAGE ===== -->
+            <div class="app-page" id="page-transport">
+                <div class="page-header">
+                    <div>
+                        <h1 class="page-title">Transport Operations</h1>
+                        <p class="page-subtitle">Fleet management and driver coordination</p>
+                    </div>
+                    <div class="page-actions">
+                        <button class="btn-secondary" onclick="filterTasks('transport', 'all')">All</button>
+                        <button class="btn-secondary" onclick="filterTasks('transport', 'pending')">Pending</button>
+                        <button class="btn-secondary" onclick="filterTasks('transport', 'done')">Done</button>
+                        <button class="btn-gold" onclick="openAddTaskModal('transport')">+ Add Task</button>
+                    </div>
+                </div>
+
+                <div class="section-hero transport-hero">
+                    <div class="section-hero-stats">
+                        <div class="hero-stat">
+                            <span class="hero-stat-val" id="transport-done-count">0</span>
+                            <span class="hero-stat-label">Completed</span>
+                        </div>
+                        <div class="hero-stat-divider"></div>
+                        <div class="hero-stat">
+                            <span class="hero-stat-val" id="transport-pending-count">6</span>
+                            <span class="hero-stat-label">Pending</span>
+                        </div>
+                        <div class="hero-stat-divider"></div>
+                        <div class="hero-stat">
+                            <span class="hero-stat-val" id="transport-pct">0%</span>
+                            <span class="hero-stat-label">Progress</span>
+                        </div>
+                    </div>
+                    <div class="section-progress-bar">
+                        <div class="section-progress-fill transport-progress" id="transport-section-bar" style="width:0%"></div>
+                    </div>
+                </div>
+
+                <div class="tasks-grid" id="transport-tasks-grid"></div>
+            </div>
+
+            <!-- ===== ANALYTICS PAGE ===== -->
+            <div class="app-page" id="page-analytics">
+                <div class="page-header">
+                    <div>
+                        <h1 class="page-title">Analytics & Insights</h1>
+                        <p class="page-subtitle">Performance metrics and operational trends</p>
+                    </div>
+                    <div class="page-actions">
+                        <button class="btn-gold" onclick="generateReport()">⬡ Export Report</button>
+                    </div>
+                </div>
+
+                <div class="analytics-grid">
+                    <div class="analytics-card wide">
+                        <h3 class="card-title">Weekly Task Completion</h3>
+                        <div class="bar-chart" id="weekly-chart">
+                            <div class="chart-bars" id="chart-bars"></div>
+                            <div class="chart-labels" id="chart-labels"></div>
+                        </div>
+                    </div>
+
+                    <div class="analytics-card">
+                        <h3 class="card-title">Completion by Department</h3>
+                        <div class="donut-chart-container">
+                            <svg class="donut-chart" width="160" height="160" viewBox="0 0 160 160">
+                                <circle cx="80" cy="80" r="60" fill="none" stroke="rgba(212,175,55,0.1)" stroke-width="20"/>
+                                <circle cx="80" cy="80" r="60" fill="none" stroke="#d4af37" stroke-width="20"
+                                    stroke-dasharray="188 188" stroke-linecap="round" id="donut-hotel"
+                                    transform="rotate(-90 80 80)"/>
+                                <circle cx="80" cy="80" r="60" fill="none" stroke="#4ade80" stroke-width="20"
+                                    stroke-dasharray="0 188" stroke-linecap="round" id="donut-transport"
+                                    transform="rotate(-90 80 80)"/>
+                                <text x="80" y="75" text-anchor="middle" font-family="Cormorant Garamond" font-size="22" fill="#fff" id="donut-center-val">0</text>
+                                <text x="80" y="92" text-anchor="middle" font-family="DM Sans" font-size="9" fill="#888">tasks done</text>
+                            </svg>
+                            <div class="donut-legend">
+                                <div class="legend-item">
+                                    <div class="legend-dot" style="background:#d4af37"></div>
+                                    <span>Hotel Ops</span>
+                                    <span class="legend-val" id="legend-hotel">0</span>
+                                </div>
+                                <div class="legend-item">
+                                    <div class="legend-dot" style="background:#4ade80"></div>
+                                    <span>Transport</span>
+                                    <span class="legend-val" id="legend-transport">0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="analytics-card">
+                        <h3 class="card-title">Performance Score</h3>
+                        <div class="performance-gauge">
+                            <div class="gauge-container">
+                                <svg width="200" height="110" viewBox="0 0 200 110">
+                                    <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="rgba(212,175,55,0.1)" stroke-width="16" stroke-linecap="round"/>
+                                    <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="url(#gaugeGrad)" stroke-width="16" stroke-linecap="round"
+                                        stroke-dasharray="251" stroke-dashoffset="251" id="gauge-arc"/>
+                                    <defs>
+                                        <linearGradient id="gaugeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                            <stop offset="0%" stop-color="#ef4444"/>
+                                            <stop offset="50%" stop-color="#fbbf24"/>
+                                            <stop offset="100%" stop-color="#4ade80"/>
+                                        </linearGradient>
+                                    </defs>
+                                    <text x="100" y="90" text-anchor="middle" font-family="Cormorant Garamond" font-size="30" fill="#d4af37" id="gauge-val">0</text>
+                                    <text x="100" y="106" text-anchor="middle" font-family="DM Sans" font-size="9" fill="#888">PERFORMANCE SCORE</text>
+                                </svg>
+                            </div>
+                            <div class="gauge-labels">
+                                <span>Poor</span><span>Good</span><span>Excellent</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="analytics-card wide">
+                        <h3 class="card-title">Task Priority Distribution</h3>
+                        <div class="priority-bars" id="priority-bars">
+                            <div class="priority-row">
+                                <span class="priority-label">🔴 High Priority</span>
+                                <div class="priority-bar-wrap">
+                                    <div class="priority-bar-fill high" style="width:33%"></div>
+                                </div>
+                                <span class="priority-count">4 tasks</span>
+                            </div>
+                            <div class="priority-row">
+                                <span class="priority-label">🟡 Medium Priority</span>
+                                <div class="priority-bar-wrap">
+                                    <div class="priority-bar-fill medium" style="width:50%"></div>
+                                </div>
+                                <span class="priority-count">6 tasks</span>
+                            </div>
+                            <div class="priority-row">
+                                <span class="priority-label">🟢 Low Priority</span>
+                                <div class="priority-bar-wrap">
+                                    <div class="priority-bar-fill low" style="width:17%"></div>
+                                </div>
+                                <span class="priority-count">2 tasks</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== TEAM PAGE ===== -->
+            <div class="app-page" id="page-team">
+                <div class="page-header">
+                    <div>
+                        <h1 class="page-title">Team Management</h1>
+                        <p class="page-subtitle">Staff overview and assignments</p>
+                    </div>
+                    <div class="page-actions">
+                        <button class="btn-gold">+ Add Member</button>
+                    </div>
+                </div>
+
+                <div class="team-grid" id="team-grid"></div>
+            </div>
+
+            <!-- ===== SETTINGS PAGE ===== -->
+            <div class="app-page" id="page-settings">
+                <div class="page-header">
+                    <div>
+                        <h1 class="page-title">Settings</h1>
+                        <p class="page-subtitle">Manage your account and preferences</p>
+                    </div>
+                </div>
+
+                <div class="settings-layout">
+                    <div class="settings-sidebar">
+                        <button class="settings-tab active" data-settings="profile">◈ Profile</button>
+                        <button class="settings-tab" data-settings="appearance">◑ Appearance</button>
+                        <button class="settings-tab" data-settings="notifications">◉ Notifications</button>
+                        <button class="settings-tab" data-settings="security">⬡ Security</button>
+                    </div>
+                    <div class="settings-content">
+                        <div class="settings-panel active" id="settings-profile">
+                            <h3 class="settings-title">Profile Settings</h3>
+                            <div class="profile-avatar-section">
+                                <div class="profile-avatar" id="profile-avatar">A</div>
+                                <button class="btn-secondary">Change Photo</button>
+                            </div>
+                            <div class="settings-form">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label class="form-label">Full Name</label>
+                                        <input class="form-input" id="profile-name-input" value="Admin User">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Role</label>
+                                        <input class="form-input" value="Administrator" readonly>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Email</label>
+                                    <input class="form-input" id="profile-email-input" value="admin@aurevia.com">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Department</label>
+                                    <select class="form-input form-select">
+                                        <option>Administration</option>
+                                        <option>Hotel Operations</option>
+                                        <option>Transport Management</option>
+                                    </select>
+                                </div>
+                                <button class="btn-gold" onclick="saveProfile()">Save Changes</button>
+                            </div>
+                        </div>
+
+                        <div class="settings-panel" id="settings-appearance">
+                            <h3 class="settings-title">Appearance</h3>
+                            <div class="appearance-options">
+                                <div class="appearance-option">
+                                    <span class="form-label">Theme</span>
+                                    <div class="theme-options">
+                                        <button class="theme-opt active" onclick="setTheme('dark')">◼ Dark</button>
+                                        <button class="theme-opt" onclick="setTheme('light')">◻ Light</button>
+                                        <button class="theme-opt" onclick="setTheme('midnight')">◈ Midnight</button>
+                                    </div>
+                                </div>
+                                <div class="appearance-option">
+                                    <span class="form-label">Accent Color</span>
+                                    <div class="color-swatches">
+                                        <div class="swatch active" style="background:#d4af37" onclick="setAccent('#d4af37')"></div>
+                                        <div class="swatch" style="background:#4ade80" onclick="setAccent('#4ade80')"></div>
+                                        <div class="swatch" style="background:#60a5fa" onclick="setAccent('#60a5fa')"></div>
+                                        <div class="swatch" style="background:#f472b6" onclick="setAccent('#f472b6')"></div>
+                                        <div class="swatch" style="background:#a78bfa" onclick="setAccent('#a78bfa')"></div>
+                                    </div>
+                                </div>
+                                <div class="appearance-option">
+                                    <span class="form-label">Sidebar Collapsed</span>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="sidebar-collapse-toggle">
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                                <div class="appearance-option">
+                                    <span class="form-label">Animations</span>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="settings-panel" id="settings-notifications">
+                            <h3 class="settings-title">Notification Preferences</h3>
+                            <div class="notif-settings">
+                                <div class="notif-setting-row">
+                                    <div>
+                                        <p class="notif-setting-title">Task Completions</p>
+                                        <p class="notif-setting-desc">Notify when tasks are marked complete</p>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                                <div class="notif-setting-row">
+                                    <div>
+                                        <p class="notif-setting-title">Daily Summaries</p>
+                                        <p class="notif-setting-desc">End of day operational report</p>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                                <div class="notif-setting-row">
+                                    <div>
+                                        <p class="notif-setting-title">Team Updates</p>
+                                        <p class="notif-setting-desc">New staff registrations and changes</p>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox">
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                                <div class="notif-setting-row">
+                                    <div>
+                                        <p class="notif-setting-title">Maintenance Alerts</p>
+                                        <p class="notif-setting-desc">Vehicle and facility maintenance due</p>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="settings-panel" id="settings-security">
+                            <h3 class="settings-title">Security</h3>
+                            <div class="settings-form">
+                                <div class="form-group">
+                                    <label class="form-label">Current Password</label>
+                                    <input class="form-input" type="password" placeholder="••••••••">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">New Password</label>
+                                    <input class="form-input" type="password" placeholder="••••••••">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Confirm Password</label>
+                                    <input class="form-input" type="password" placeholder="••••••••">
+                                </div>
+                                <button class="btn-gold">Update Password</button>
+                                <div class="security-info">
+                                    <div class="security-row">
+                                        <span>Last Login</span>
+                                        <span id="last-login-display">Just now</span>
+                                    </div>
+                                    <div class="security-row">
+                                        <span>Two-Factor Auth</span>
+                                        <label class="toggle-switch">
+                                            <input type="checkbox">
+                                            <span class="toggle-slider"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- end content-area -->
+    </div><!-- end main-panel -->
+</div><!-- end main-app -->
+
+<!-- ===== ADD TASK MODAL ===== -->
+<div class="modal-overlay" id="task-modal">
+    <div class="modal">
+        <div class="modal-header">
+            <h2 class="modal-title">Add New Task</h2>
+            <button class="modal-close" onclick="closeModal()">✕</button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label class="form-label">Task Name</label>
+                <input class="form-input" id="new-task-name" placeholder="Enter task description">
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="form-label">Priority</label>
+                    <select class="form-input form-select" id="new-task-priority">
+                        <option value="high">🔴 High</option>
+                        <option value="medium" selected>🟡 Medium</option>
+                        <option value="low">🟢 Low</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Assign To</label>
+                    <select class="form-input form-select" id="new-task-assignee">
+                        <option>Sofia Chen</option>
+                        <option>Marcus Williams</option>
+                        <option>Priya Sharma</option>
+                        <option>James O'Brien</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Icon</label>
+                <div class="icon-picker" id="icon-picker">
+                    <span class="icon-option active">🏨</span>
+                    <span class="icon-option">🛎</span>
+                    <span class="icon-option">🚗</span>
+                    <span class="icon-option">✅</span>
+                    <span class="icon-option">📋</span>
+                    <span class="icon-option">🔧</span>
+                    <span class="icon-option">⭐</span>
+                    <span class="icon-option">🧹</span>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn-secondary" onclick="closeModal()">Cancel</button>
+            <button class="btn-gold" onclick="addNewTask()">Add Task</button>
+        </div>
+    </div>
+</div>
+
+<!-- ===== TOAST ===== -->
+<div class="toast" id="toast">
+    <span class="toast-icon" id="toast-icon">✓</span>
+    <span class="toast-text" id="toast-text">Task completed!</span>
+</div>
+
+<!-- ===== REPORT MODAL ===== -->
+<div class="modal-overlay" id="report-modal">
+    <div class="modal modal-wide">
+        <div class="modal-header">
+            <h2 class="modal-title">Daily Operations Report</h2>
+            <button class="modal-close" onclick="document.getElementById('report-modal').classList.remove('active')">✕</button>
+        </div>
+        <div class="modal-body" id="report-content"></div>
+        <div class="modal-footer">
+            <button class="btn-secondary" onclick="document.getElementById('report-modal').classList.remove('active')">Close</button>
+            <button class="btn-gold" onclick="window.print()">Print Report</button>
+        </div>
+    </div>
+</div>
+
+<script src="js.js"></script>
+</body>
+</html>
